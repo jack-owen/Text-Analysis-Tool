@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3CWK50_Text-Analysis-Tool_WFA", "3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA.csproj", "{22BD8D72-B416-402A-A2B5-96A667C4BC53}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22BD8D72-B416-402A-A2B5-96A667C4BC53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22BD8D72-B416-402A-A2B5-96A667C4BC53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22BD8D72-B416-402A-A2B5-96A667C4BC53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22BD8D72-B416-402A-A2B5-96A667C4BC53}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9872B81-9BA3-499E-B604-B2037F7CD955}
+	EndGlobalSection
+EndGlobal
