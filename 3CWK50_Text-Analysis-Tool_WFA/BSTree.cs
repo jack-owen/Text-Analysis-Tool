@@ -130,7 +130,7 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
 
         }
-        private T leastItem(Node<T> tree)
+        protected T leastItem(Node<T> tree)
         {
             if (tree.Left == null)
             {
@@ -153,6 +153,7 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             {
                 return null;
             }
+            
             if (item.Equals(tree.Data))
             {
                 return tree;
@@ -167,6 +168,61 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
                 {
                     return find(item, tree.Right);
                 }
+            }
+        }
+
+        public T[] GetAllNodes() // list of all nodes, essentially in Post order
+        {
+            List<T> list = new List<T>();
+            getAllNodes(root, ref list);
+            T[] res = list.ToArray();
+            return res;
+        }
+
+        private void getAllNodes(Node<T> tree, ref List<T> list) //* duplicate of concordance procedure
+        {
+            if (tree != null)
+            {
+                getAllNodes(tree.Left, ref list);
+                getAllNodes(tree.Right, ref list);
+                list.Add(tree.Data);
+            }
+        }
+
+        public T[] Concordance() // sorted list by Alphabetical order
+        {
+            List<T> list = new List<T>();
+            concordance(root, ref list); // gather tree node words
+            // sort array words by alphabetical order using the best sorting algorithm
+            //* use Insertion Sort for small n and Quick Sort for larger n sets
+            T[] res = list.ToArray();
+            InsertionSort(ref res);
+
+            return res;
+        }
+
+        private void concordance(Node<T> tree, ref List<T> list)
+        {
+            if (tree != null)
+            {
+                concordance(tree.Left, ref list);
+                concordance(tree.Right, ref list);
+                list.Add(tree.Data);
+            }
+        }
+
+        private void InsertionSort(ref T[] a) // ascending
+        {
+            for (int i = 1; i < a.Length; i++)
+            {
+                T value = a[i];
+                int j = i;
+
+                for (; j > 0 && value.CompareTo(a[j - 1]) < 0; j--)
+                {
+                    a[j] = a[j - 1];
+                }
+                a[j] = value;
             }
         }
 

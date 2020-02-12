@@ -18,33 +18,33 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
 
-            
 
-            // if word does not exist in tree insert new item
+        // if word does not exist in tree insert new item
 
-            //tree.InsertItem(new Word("Cup", 0, 3));
-            //tree.InsertItem(new Word("Elephant", 0, 3));
-            //tree.InsertItem(new Word("Basketball", 0, 3));
-            // todo 
-            // else edit existing item in AVLTree
-            // tree.item.add(location)
+        //tree.InsertItem(new Word("Cup", 0, 3));
+        //tree.InsertItem(new Word("Elephant", 0, 3));
+        //tree.InsertItem(new Word("Basketball", 0, 3));
+        // todo 
+        // else edit existing item in AVLTree
+        // tree.item.add(location)
 
-            /* old Console Application Code 
-            // load text file
-            string[] lines = System.IO.File.ReadAllLines(@"..\..\..\TextFile_sample-data.txt");
+        /* old Console Application Code 
+        // load text file
+        string[] lines = System.IO.File.ReadAllLines(@"..\..\..\TextFile_sample-data.txt");
 
-            //foreach (string line in lines)
-            for (int i = 0; i < lines.Length - 1; i++)
+        //foreach (string line in lines)
+        for (int i = 0; i < lines.Length - 1; i++)
+        {
+            string[] words = lines[i].Split(' ');
+            for (int j = 0; j < words.Length - 1; j++)
             {
-                string[] words = lines[i].Split(' ');
-                for (int j = 0; j < words.Length - 1; j++)
-                {
-                    char[] charsToTrim = { ',', '.', ' ', '\'' };
-                    //System.Console.WriteLine(word.Trim(charsToTrim));
-                    tree.InsertItem(new Word(words[j].Trim(charsToTrim), i, j)); // line and pos index start at 0 or 1
-                }
-            }*/
+                char[] charsToTrim = { ',', '.', ' ', '\'' };
+                //System.Console.WriteLine(word.Trim(charsToTrim));
+                tree.InsertItem(new Word(words[j].Trim(charsToTrim), i, j)); // line and pos index start at 0 or 1
+            }
+        }*/
 
         }
+
     }
 }

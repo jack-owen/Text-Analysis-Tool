@@ -53,6 +53,48 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             tree = newRoot;
         }
 
+        /* override BSTree RemoveItem to use Balance Factoring */
+        public new void RemoveItem(T item)
+        {
+            removeItem(item, ref root);
+        }
+
+        private void removeItem(T item, ref Node<T> tree) //* testing required
+        {
+            if (tree != null)
+            {
+                if (item.CompareTo(tree.Data) < 0)
+                {
+                    removeItem(item, ref tree.Left);
+                }
+                if (item.CompareTo(tree.Data) > 0)
+                {
+                    removeItem(item, ref tree.Right);
+                }
+                if (item.Equals(tree.Data)) // true
+                {
+                    if (tree.Left == null)
+                        tree = tree.Right;
+                    else if (tree.Right == null)
+                        tree = tree.Left;
+                    else
+                    {
+                        T newRoot = leastItem(tree.Right); // find smallest item in right
+                        tree.Data = newRoot;
+                        removeItem(newRoot, ref tree.Right);
+                        tree.BalanceFactor = height(ref tree.Left) - height(ref tree.Right);
+                        Console.WriteLine(tree.BalanceFactor);
+                        if (tree.BalanceFactor <= -2)
+                            rotateLeft(ref tree);
+                        if (tree.BalanceFactor >= 2)
+                            rotateRight(ref tree);
+                    }
+                }
+            }
+
+
+        }
+
     }
 
 
