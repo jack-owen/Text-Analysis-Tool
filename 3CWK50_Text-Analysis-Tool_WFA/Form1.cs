@@ -14,30 +14,27 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
 {
     public partial class Form1 : Form
     {
-        private AVLTree<Word> tree;
+        private AVLTree<Word> tree = new AVLTree<Word>();
 
         public Form1()
         {
             InitializeComponent();
-            tree = new AVLTree<Word>();
+            //tree = new AVLTree<Word>();
             //string _ = "It was one January morning, very early, a pinching, frosty morning. The cove all grey with hoar frost,";
-            string _ = "frost";
-            char[] chars = { ',', ' ', '.' };
-            string[] e = _.Split(chars);
-            for (int i = 0; i < e.Length; i++)
-            {
-                tree.InsertItem(new Word(e[i], 1, 1));
-            }
-            listView_words.Columns.Add("Word", -2, HorizontalAlignment.Left);
-            listView_words.Columns.Add("Occurrences", -2, HorizontalAlignment.Left);
-            listView_words.Columns.Add("LineNo:Position", -2, HorizontalAlignment.Left);
-            refresh_listView_words(string.Empty);
-            updateWordCounter();
+            //string _ = "frost";
+            //char[] chars = { ',', ' ', '.' };
+            //string[] e = _.Split(chars);
+            //for (int i = 0; i < e.Length; i++)
+            //{
+            //    tree.InsertItem(new Word(e[i], 1, 1));
+            //}
+            //refresh_listView_words(string.Empty); // not necessary to load words on Load because no words will be present on Load
         }
 
         /* 1. Load a text file and store the unique words (AVL Tree) */
-        private void button1_Click(object sender, EventArgs e)
+        private void button_load_Click(object sender, EventArgs e)
         {
+            int c = 0;
             DialogResult result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK) // Check result
             {
@@ -51,16 +48,16 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
                         {
                             i++;
                             string[] words = line.Split(' ');
-                            for (int j = 0; j < words.Length - 1; j++)
+                            for (int j = 0; j < words.Length; j++)
                             {
-                                char[] charsToTrim = { ',', '.', ' ', '\'' };
-                                if (tree.Contains(new Word(words[j].Trim(charsToTrim)))) {
-                                    Word word = tree.Find(new Word(words[j].Trim(charsToTrim))).Data;
+                                char[] charsToTrim = { ',', '.', '\'' };
+                                if (tree.Contains(new Word(words[j].ToLower().Trim(charsToTrim)))) {
+                                    Word word = tree.Find(new Word(words[j].ToLower().Trim(charsToTrim))).Data;
                                     word.AddLocation(i,j);
                                 }
                                 else
                                 {
-                                    tree.InsertItem(new Word(words[j].Trim(charsToTrim), i, j)); // line and pos index start at 0 or 1
+                                    tree.InsertItem(new Word(words[j].ToLower().Trim(charsToTrim), i, j)); // line and pos index start at 0 or 1
                                 }
                             }
                         }
@@ -74,11 +71,16 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
             updateWordCounter();
             refresh_listView_words(string.Empty);
+            Console.WriteLine(tree.Count()+" words added");
         }
 
         /* 2. Manually edit (and save in the data structure) the information of a unique word */
-        private void button_toForm_EditWord_Click(object sender, EventArgs e)
+        private void button_editWord_Click(object sender, EventArgs e)
         {
+            if (!checkForLoadedWords())
+            {
+                return;
+            }
             if (listView_words.SelectedItems.Count == 0) // when no word is selected
             {
                 string message = "Please select a Word";
@@ -112,6 +114,10 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
         /* 4. Remove a unique word from the data structure */
         private void button_remove_word_Click(object sender, EventArgs e)
         {
+            if (!checkForLoadedWords())
+            {
+                return;
+            }
             if (listView_words.SelectedItems.Count == 0) // when no word is selected
             {
                 _ = MessageBox.Show("Please select a Word", "Selection Error", MessageBoxButtons.OK);
@@ -140,8 +146,6 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
         }
 
-     
-
         /* Word input search 
          * Supports Point No.1 */
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -155,6 +159,7 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
          * Supports Point No.1 */
         public void refresh_listView_words(string wordToSearch)
         {
+            
             ListViewItem[] list = new ListViewItem[tree.GetAllNodes().Length];
             listView_words.Items.Clear();
             foreach (Word w in tree.GetAllNodes())
@@ -186,6 +191,11 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
                 //listView_words.Items[0].Focused;
                 //listView_words.Items[0].Selected;
             }
+            listView_words.Columns.Add("Word", -2, HorizontalAlignment.Left);
+            listView_words.Columns.Add("Occurrences", -2, HorizontalAlignment.Left);
+            listView_words.Columns.Add("LineNo:Position", -2, HorizontalAlignment.Left);
+            listView_words.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            listView_words.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         /* 5. Display the concordance of the text – i.e. show all the unique words present in the text in
@@ -193,15 +203,12 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
         private void radioBtn_concordance_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
-            if (!rb.Checked) return; // button set to false do nothing
-                                     /* show all the unique words present in the text in alphabetic order and the
-                                     corresponding number of times in which they occur in the text */
-            update_concordance();
-        }
-        
-
-        private void update_concordance()
-        {
+            if (!rb.Checked) return; // button set to false => do nothing
+            if (!checkForLoadedWords())
+            {
+                radioBtn_concordance.Checked = false;
+                return;
+            }
             listView_advancedSearch.Columns.Clear();
             listView_advancedSearch.Columns.Add("Word", 100, HorizontalAlignment.Left);
             listView_advancedSearch.Columns.Add("Occurrences", -2, HorizontalAlignment.Left);
@@ -214,7 +221,6 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
                 i.SubItems.Add(w.Occurrences.ToString());
                 listView_advancedSearch.Items.Add(i);
             }
-            
         }
 
         /* 7a the most common unique word present in the text */
@@ -222,6 +228,11 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
         {
             RadioButton rb = sender as RadioButton;
             if (!rb.Checked) return; // button set to false do nothing
+            if (!checkForLoadedWords())
+            {
+                radioBtn_mostCommonUniqueWord.Checked = false;
+                return;
+            }
             Word[] words = tree.GetAllNodes();
             Word mostCommon = words[0];
             foreach (Word w in words)
@@ -235,6 +246,7 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             ListViewItem i = new ListViewItem(mostCommon.WordObj.ToString());
             i.SubItems.Add(mostCommon.Occurrences.ToString());
             listView_advancedSearch.Items.Add(i);
+            
         }
 
         /* 7b unique words which occur more than a specified number of times */
@@ -242,6 +254,11 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
         {
             RadioButton rb = sender as RadioButton;
             if (!rb.Checked) return; // button set to false do nothing
+            if (!checkForLoadedWords())
+            {
+                radioBtn_wordsThatOccurMoreThan.Checked = false;
+                return;
+            }
             listView_advancedSearch.Columns.Clear();
             listView_advancedSearch.Columns.Add("Word", 100, HorizontalAlignment.Left);
             listView_advancedSearch.Columns.Add("Occurrences", -2, HorizontalAlignment.Left);
@@ -271,6 +288,15 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
                     listView_advancedSearch.Items.Add(i);
                 }
             }
+            if (listView_advancedSearch.Items.Count == 0)
+            {
+                string message = "No Words found that occur more than "+x+" times";
+                string caption = "No Words found";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                _ = MessageBox.Show(message, caption, buttons);
+                radioBtn_wordsThatOccurMoreThan.Checked = false;
+                return;
+            }
         }
 
         /* all the unique words present in the text in decreasing order of occurrence */
@@ -278,6 +304,12 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
         {
             RadioButton rb = sender as RadioButton;
             if (!rb.Checked) return; // button set to false do nothing
+            if (!checkForLoadedWords())
+            {
+                radioBtn_decreasingOrderOccurrence.Checked = false;
+                return;
+            }
+
             listView_advancedSearch.Columns.Clear();
             listView_advancedSearch.Columns.Add("Word", 100, HorizontalAlignment.Left);
             listView_advancedSearch.Columns.Add("Occurrences", -2, HorizontalAlignment.Left);
@@ -286,8 +318,7 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             listView_advancedSearch.Items.Clear();
 
             //?* methods to get Words in Occurence order descending. which is more maintainable?
-            // 1. getAllNodes (preorder) -> then sort locally -> then populate List View
-            // 2. getAllNodes from tree -> sort nodes in tree method + lambda CompareTo method -> populate List View
+            // handle insertion sort & compareto locally or use BSTree Insertion method and somehow override the compareTo method for desc rather than asc?
 
             // insertion sort
             for (int i = 1; i < words.Length; i++)
@@ -301,7 +332,7 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
                 }
                 words[j] = value;
             }
-            // add to List View table
+            // add Words to List View table
             foreach (Word w in words)
             {
                 ListViewItem i = new ListViewItem(w.WordObj.ToString());
@@ -315,11 +346,15 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
         structure. Assume they must exist on the same line. */
         
         //? is a nested for loop search on all nodes the most efficient method to use
-        
         private void radioButton_collocation_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
             if (!rb.Checked) return; // button set to false do nothing
+            if (!checkForLoadedWords())
+            {
+                radioButton_collocation.Checked = false;
+                return;
+            }
             listView_advancedSearch.Columns.Clear();
             listView_advancedSearch.Columns.Add("Word", 100, HorizontalAlignment.Left);
             listView_advancedSearch.Columns.Add("Collocation qty", -2, HorizontalAlignment.Left);
@@ -390,7 +425,7 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
             if (collocationQty == 0)
             {
-                string message = "No Collocation found for word pair "+ textBox_collocation_A.Text +" and "+ textBox_collocation_B.Text;
+                string message = "No Collocation found for word pair '"+ textBox_collocation_A.Text +"' and '"+ textBox_collocation_B.Text+"'";
                 string caption = "No Collocation found";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 _ = MessageBox.Show(message, caption, buttons);
@@ -405,63 +440,19 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
         }
 
-        //private void update_listBox_words(string wordToSearch)
-        //{
-        //    listBox_words.Items.Clear();
-        //    Word[] words = tree.GetAllNodes();
-        //    foreach (Word w in words)
-        //    {
-        //        if (w.WordObj.StartsWith(wordToSearch.Trim()))
-        //        {
-        //            listBox_words.Items.Add(w.WordObj.ToString());
-        //        }
-        //    }
-        //    //* instead of finding one Word in the Tree, search through the tree for matches.
-        //    //master = tree.Find(new Word(wordToSearch.Trim())).Data; // old method used to search for words
-        //    //listBox_words.Items.Add(master.WordObj.ToString());
-        //    if (listBox_words.Items.Count == 0)
-        //    {
-        //        string message = "Word not found";
-        //        string caption = "Error Detected in Input";
-        //        MessageBoxButtons buttons = MessageBoxButtons.OK;
-        //        _ = MessageBox.Show(message, caption, buttons);
-        //    }
-        //    else if (listBox_words.Items.Count > 0) listBox_words.SelectedIndex = 0;
-        //}
-
-
-        //private void listBox_words_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    //* is there a way to pass Word object from the selected item
-        //    //Console.WriteLine(listBox_words.SelectedItem);
-        //    string wordToSearch = listBox_words.SelectedItem.ToString();
-        //    Word word = null;
-        //    try
-        //    {
-        //        word = tree.Find(new Word(wordToSearch.Trim())).Data;
-        //    }
-        //    catch (Exception e2)
-        //    {
-        //        Console.WriteLine(e2.StackTrace);
-        //    }
-        //    updateOutputWordInfo(word);
-        //}
-
-        //private void updateOutputWordInfo(Word word)
-        //{
-        //    output_word.Text = word.WordObj.ToString();
-        //    output_occurrences.Text = word.Occurrences.ToString();
-        //    listBox_word_location.Items.Clear();
-        //    foreach (Location location in word.Locations)
-        //    {
-        //        listBox_word_location.Items.Add("Line Number: "+location.LineNo.ToString()+", position: "+location.Pos.ToString());
-        //    }
-        //    // listBox_word_location
-        //    //+ list of locations.
-        //    //output_location_lineNo.Text = word.Locations.First.Value.LineNo.ToString(); //+ loop the dif values in Locations linkedlist
-        //    //output_location_pos.Text = word.Locations.First.Value.Pos.ToString(); //+ loop the dif values in Locations linkedlist
-        //}
-
+        private bool checkForLoadedWords()
+        {
+            Word[] words = tree.GetAllNodes();
+            if (words.Length == 0)
+            {
+                string message = "Please check you have loaded your text file";
+                string caption = "No Word(s) found";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                _ = MessageBox.Show(message, caption, buttons);
+                return false;
+            }
+            return true;
+        }
 
     }
 }

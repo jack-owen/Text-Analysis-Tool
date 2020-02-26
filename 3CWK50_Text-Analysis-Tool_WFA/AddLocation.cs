@@ -28,6 +28,7 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             word.AddLocation(Int32.Parse(textBox_locations_add_lineNo.Text), Int32.Parse(textBox_locations_add_pos.Text));
             Close();
             parent.refresh_listView_locations();
+            parent.refresh_label_occurrences_value();
         }
 
         private void AddLocation_FormClosing(object sender, FormClosingEventArgs e)

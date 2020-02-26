@@ -109,7 +109,6 @@
             this.listView_locations.TabIndex = 14;
             this.listView_locations.UseCompatibleStateImageBehavior = false;
             this.listView_locations.View = System.Windows.Forms.View.Details;
-            this.listView_locations.SelectedIndexChanged += new System.EventHandler(this.listView_locations_SelectedIndexChanged);
             this.listView_locations.Click += new System.EventHandler(this.listView_locations_Click);
             // 
             // label_locations_pos

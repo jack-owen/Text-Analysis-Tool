@@ -14,6 +14,8 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
     {
         Word word;
         Form1 parent;
+        Location locationInEdit = null;
+
         public EditWord(Object item, Form1 parent)
         {
             this.word = (Word)item;
@@ -28,31 +30,15 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             listView_locations.Columns.Add("Pos #", -2, HorizontalAlignment.Left);
             refresh_listView_locations();
             refresh_label_occurrences_value();
-
         }
 
         /* 2. Manually edit (and save in the data structure) the information of a unique word */
-
-
         private void textBox_word_TextChanged(object sender, EventArgs e)
         {
             //** set word to input value
             //* error window when zero chars?
-            string old = word.WordObj;
             word.WordObj = textBox_word.Text;
             parent.refresh_listView_words(string.Empty);
-            Console.WriteLine(old + " changed to " + word.WordObj);
-        }
-
-        Location locationInEdit = null;
-        private void listView_locations_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //ListViewItem _ = listView_locations.SelectedItems[0];
-            //Location _2 = (Location)_;
-
-            //Console.WriteLine(_);
-
-            //textBox_locations_edit_lineNo.Text = 
         }
 
         private void listView_locations_Click(object sender, EventArgs e)
@@ -71,7 +57,6 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
                 }
             }
         }
-
 
         private void setLocationEdit()
         {
@@ -104,6 +89,8 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
             else
             {
+                if (textBox_locations_edit_lineNo.Text == string.Empty) return; // this can be when a Location is Removed
+
                 string message = "Select a Word Location first";
                 string caption = "Location not selected";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -136,6 +123,8 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
             else
             {
+                if (textBox_locations_edit_pos.Text == string.Empty) return; // this can be when a Location is Removed
+
                 string message = "Select a Word Location first";
                 string caption = "Location not selected";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -144,7 +133,7 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
 
         }
 
-        private void refresh_label_occurrences_value()
+        public void refresh_label_occurrences_value()
         {
             label_occurrences_value.Text = word.Locations.Count.ToString();
         }

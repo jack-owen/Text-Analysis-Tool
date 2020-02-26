@@ -80,20 +80,6 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
         }
 
-        //private Boolean contains2(T item, ref Node<T> tree)
-        //{
-        //    if (tree != null)
-        //    {
-        //        if (tree.Data.Equals(item))
-        //        {
-        //            return true;
-        //        }
-        //        contains2(item, ref tree.Left);
-        //        contains2(item, ref tree.Right);
-        //    }
-        //    return false;
-        //}
-
         public void RemoveItem(T item)
         {
             removeItem(item, ref root);
@@ -128,8 +114,8 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
                     }
                 }
             }
-
         }
+
         protected T leastItem(Node<T> tree)
         {
             if (tree.Left == null)
@@ -189,26 +175,15 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
         }
 
-        public T[] Concordance() // sorted list by Alphabetical order
+        public T[] Concordance() // sorted list by ascending Alphabetical order
         {
             List<T> list = new List<T>();
-            concordance(root, ref list); // gather tree node words
-            // sort array words by alphabetical order using the best sorting algorithm
-            //* use Insertion Sort for small n and Quick Sort for larger n sets
+            getAllNodes(root, ref list); // gather all tree nodes
+            //*** use Insertion Sort for small n and Quick Sort for larger n sets
             T[] res = list.ToArray();
             InsertionSort(ref res);
 
             return res;
-        }
-
-        private void concordance(Node<T> tree, ref List<T> list)
-        {
-            if (tree != null)
-            {
-                concordance(tree.Left, ref list);
-                concordance(tree.Right, ref list);
-                list.Add(tree.Data);
-            }
         }
 
         private void InsertionSort(ref T[] a) // ascending

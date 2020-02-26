@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_load = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button_toForm_EditWord = new System.Windows.Forms.Button();
             this.label_qtyUniqueWords = new System.Windows.Forms.Label();
             this.button_remove_word = new System.Windows.Forms.Button();
             this.listView_words = new System.Windows.Forms.ListView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox_collocation_B = new System.Windows.Forms.TextBox();
+            this.textBox_collocation_A = new System.Windows.Forms.TextBox();
             this.radioButton_collocation = new System.Windows.Forms.RadioButton();
             this.listView_advancedSearch = new System.Windows.Forms.ListView();
             this.radioBtn_decreasingOrderOccurrence = new System.Windows.Forms.RadioButton();
@@ -44,21 +46,19 @@
             this.radioBtn_mostCommonUniqueWord = new System.Windows.Forms.RadioButton();
             this.radioBtn_concordance = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox_collocation_A = new System.Windows.Forms.TextBox();
-            this.textBox_collocation_B = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // button_load
             // 
-            this.button1.Location = new System.Drawing.Point(67, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 46);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Load";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_load.Location = new System.Drawing.Point(67, 16);
+            this.button_load.Name = "button_load";
+            this.button_load.Size = new System.Drawing.Size(92, 46);
+            this.button_load.TabIndex = 0;
+            this.button_load.Text = "Load";
+            this.button_load.UseVisualStyleBackColor = true;
+            this.button_load.Click += new System.EventHandler(this.button_load_Click);
             // 
             // textBox1
             // 
@@ -77,7 +77,7 @@
             this.button_toForm_EditWord.TabIndex = 8;
             this.button_toForm_EditWord.Text = "Edit";
             this.button_toForm_EditWord.UseVisualStyleBackColor = true;
-            this.button_toForm_EditWord.Click += new System.EventHandler(this.button_toForm_EditWord_Click);
+            this.button_toForm_EditWord.Click += new System.EventHandler(this.button_editWord_Click);
             // 
             // label_qtyUniqueWords
             // 
@@ -129,6 +129,20 @@
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Advanced Search";
+            // 
+            // textBox_collocation_B
+            // 
+            this.textBox_collocation_B.Location = new System.Drawing.Point(188, 134);
+            this.textBox_collocation_B.Name = "textBox_collocation_B";
+            this.textBox_collocation_B.Size = new System.Drawing.Size(78, 22);
+            this.textBox_collocation_B.TabIndex = 23;
+            // 
+            // textBox_collocation_A
+            // 
+            this.textBox_collocation_A.Location = new System.Drawing.Point(104, 134);
+            this.textBox_collocation_A.Name = "textBox_collocation_A";
+            this.textBox_collocation_A.Size = new System.Drawing.Size(78, 22);
+            this.textBox_collocation_A.TabIndex = 22;
             // 
             // radioButton_collocation
             // 
@@ -224,20 +238,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search by Prefix";
             // 
-            // textBox_collocation_A
-            // 
-            this.textBox_collocation_A.Location = new System.Drawing.Point(104, 134);
-            this.textBox_collocation_A.Name = "textBox_collocation_A";
-            this.textBox_collocation_A.Size = new System.Drawing.Size(78, 22);
-            this.textBox_collocation_A.TabIndex = 22;
-            // 
-            // textBox_collocation_B
-            // 
-            this.textBox_collocation_B.Location = new System.Drawing.Point(188, 134);
-            this.textBox_collocation_B.Name = "textBox_collocation_B";
-            this.textBox_collocation_B.Size = new System.Drawing.Size(78, 22);
-            this.textBox_collocation_B.TabIndex = 23;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -245,7 +245,7 @@
             this.ClientSize = new System.Drawing.Size(957, 621);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label_qtyUniqueWords);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_load);
             this.Controls.Add(this.groupBox2);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -261,7 +261,7 @@
         #endregion
 
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_load;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button_toForm_EditWord;
         private System.Windows.Forms.Label label_qtyUniqueWords;
