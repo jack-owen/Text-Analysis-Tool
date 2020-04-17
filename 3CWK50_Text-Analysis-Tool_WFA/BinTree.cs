@@ -18,20 +18,20 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
 
 
         // Pre Order traversal
-        //public void PreOrder(ref string buffer)
-        //{
-        //    preOrder(root, ref buffer);
-        //}
+        public void PreOrder(ref string buffer)
+        {
+            preOrder(root, ref buffer);
+        }
 
-        //private void preOrder(Node<T> tree, ref string buffer)
-        //{
-        //    if (tree != null)
-        //    {
-        //        buffer += tree.Data.ToString() + ", ";
-        //        preOrder(tree.Left, ref buffer);
-        //        preOrder(tree.Right, ref buffer);
-        //    }
-        //}
+        private void preOrder(Node<T> tree, ref string buffer)
+        {
+            if (tree != null)
+            {
+                buffer += tree.Data.ToString() + ", ";
+                preOrder(tree.Left, ref buffer);
+                preOrder(tree.Right, ref buffer);
+            }
+        }
 
         // In Order traversal
         //public void InOrder(ref string buffer)

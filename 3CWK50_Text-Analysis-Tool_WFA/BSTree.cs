@@ -5,7 +5,7 @@ using System.Text;
 namespace _3CWK50_Text_Analysis_Tool_WFA
 {
     class BSTree<T> : BinTree<T> where T : IComparable
-    {  //root declared as protected in Parent Class – Binary Tree
+    {
         public BSTree()
         {
             root = null;
@@ -114,6 +114,10 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
                     }
                 }
             }
+            else
+            {
+                throw new Exception("Item doesn't exist in tree");
+            }
         }
 
         protected T leastItem(Node<T> tree)
@@ -186,7 +190,9 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             return res;
         }
 
+        // helper function for Concordance function
         private void InsertionSort(ref T[] a) // ascending
+            // ** look at implementing a combination of quicksort and insertion sort (check for less than 20 items...)
         {
             for (int i = 1; i < a.Length; i++)
             {

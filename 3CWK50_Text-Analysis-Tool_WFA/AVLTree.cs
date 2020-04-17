@@ -91,6 +91,10 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
                     }
                 }
             }
+            else
+            {
+                throw new Exception("Item doesn't exist in tree");
+            }
 
 
         }
