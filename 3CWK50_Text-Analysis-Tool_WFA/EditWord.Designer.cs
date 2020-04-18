@@ -59,7 +59,7 @@
             this.panel1.Controls.Add(this.label_occurrences);
             this.panel1.Location = new System.Drawing.Point(25, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(655, 565);
+            this.panel1.Size = new System.Drawing.Size(419, 351);
             this.panel1.TabIndex = 1;
             // 
             // button_location_remove
@@ -175,11 +175,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 736);
+            this.ClientSize = new System.Drawing.Size(473, 390);
             this.Controls.Add(this.textBox_word);
             this.Controls.Add(this.panel1);
             this.Name = "EditWord";
-            this.Text = "EditWord";
+            this.Text = "Edit Word";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditWord_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

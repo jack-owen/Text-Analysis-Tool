@@ -31,16 +31,5 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             parent.refresh_label_occurrences_value();
         }
 
-        private void AddLocation_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //    string message = "Do you want to contiue without adding a new location to "+word.WordObj;
-            //    string caption = "Confirmation";
-            //    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            //    DialogResult res = MessageBox.Show(message, caption, buttons);
-
-            //    e.Cancel = (res == DialogResult.No);
-
-            //}
-        }
     }
 }

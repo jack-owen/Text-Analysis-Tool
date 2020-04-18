@@ -6,12 +6,20 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
 {
     class AVLTree<T> : BSTree<T> where T : IComparable
     {
-
+        /// <summary>
+        /// Add item to Tree
+        /// </summary>
+        /// <param name="item">Generic object to add to tree</param>
         public new void InsertItem(T item)
         {
             insertItem(item, ref root);
         }
 
+        /// <summary>
+        /// Add item to Tree 
+        /// </summary>
+        /// <param name="item">Generic object to add to tree</param>
+        /// <param name="tree">Generic root node</param>
         private void insertItem(T item, ref Node<T> tree)
         {
             if (tree == null)
@@ -29,6 +37,10 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
                 rotateRight(ref tree);
         }
 
+        /// <summary>
+        /// Rotation technique used to re balance the tree when balance factor is <= -2
+        /// </summary>
+        /// <param name="tree">Generic root node</param>
         private void rotateLeft(ref Node<T> tree)
         {
             if (tree.Right.BalanceFactor > 0)  //double rotate
@@ -41,6 +53,10 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             tree = newRoot;
         }
 
+        /// <summary>
+        /// Rotation technique used to re balance the tree when balance factor is >= 2
+        /// </summary>
+        /// <param name="tree">Generic root node</param>
         private void rotateRight(ref Node<T> tree)
         {
             if (tree.Left.BalanceFactor < 0)  //double rotate
@@ -53,13 +69,21 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             tree = newRoot;
         }
 
-        /* override BSTree RemoveItem to use Balance Factoring */
+        /// <summary>
+        /// Remove item from Tree
+        /// </summary>
+        /// <param name="item">Generic object to remove from tree</param>
         public new void RemoveItem(T item)
         {
             removeItem(item, ref root);
         }
 
-        private void removeItem(T item, ref Node<T> tree) //* testing required
+        /// <summary>
+        /// Search for item in tree recursively and checks balance factor of tree after item is removed.
+        /// </summary>
+        /// <param name="item">Generic object to remove from tree</param>
+        /// <param name="tree">Generic root node</param>
+        private void removeItem(T item, ref Node<T> tree)
         {
             if (tree != null)
             {
@@ -71,7 +95,7 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
                 {
                     removeItem(item, ref tree.Right);
                 }
-                if (item.Equals(tree.Data)) // true
+                if (item.Equals(tree.Data))
                 {
                     if (tree.Left == null)
                         tree = tree.Right;

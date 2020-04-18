@@ -81,15 +81,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 450);
+            this.ClientSize = new System.Drawing.Size(369, 163);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.label_locations_pos);
             this.Controls.Add(this.textBox_locations_add_pos);
             this.Controls.Add(this.label_locations_lineNo);
             this.Controls.Add(this.textBox_locations_add_lineNo);
             this.Name = "AddLocation";
-            this.Text = "AddLocation";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddLocation_FormClosing);
+            this.Text = "Add Location";
             this.ResumeLayout(false);
             this.PerformLayout();
 

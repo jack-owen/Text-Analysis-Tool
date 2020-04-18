@@ -7,59 +7,65 @@ using System.Threading.Tasks;
 namespace Test
 {
 
-    using _3CWK50_Text_Analysis_Tool_WFA;  // this allows to use Library and Book class
+    using _3CWK50_Text_Analysis_Tool_WFA;
     using NUnit.Framework;
 
-    [TestFixture]  // denotes the class that contains tests
+    [TestFixture]
     class BSTreeTest 
     {
         BSTree<Word> tree;
         Word word, word2, word3;
 
-        [OneTimeSetUp] //executed once before any test
+        [OneTimeSetUp]
         public void TestFixtureSetUp()
         {
             word = new Word("Sweets");
             word2 = new Word("Chocolate");
             word3 = new Word("Lolly");
-
-
         }
 
-        [SetUp]  //executed just before each test
-        public void SetUp() // review
+        [SetUp]
+        public void SetUp()
         {
             tree = new AVLTree<Word>();
             tree.InsertItem(word);
             tree.InsertItem(word2);
             tree.InsertItem(word3);
-            
         }
 
-
+        /// <summary>
+        /// Test Binary Search Tree insert item operation
+        /// </summary>
         [Test]
         public void TestInsertItem() 
         {
             string s = null;
             tree.PreOrder(ref s);
-
             string answer = "sweets, chocolate, lolly, ";
-
             Assert.AreEqual(answer, s, "Tree insert item result incorrect");
         }
 
+        /// <summary>
+        /// Test Tree height function accuracy
+        /// </summary>
         [Test]
         public void TestHeight()
         {
             Assert.AreEqual(3, tree.Height(), "Tree height wrong");
         }
 
+        /// <summary>
+        /// Test Tree node count function accuracy
+        /// </summary>
         [Test]
         public void TestCount()
         {
             Assert.AreEqual(3, tree.Count(), "Tree count quantity wrong");
         }
 
+        /// <summary>
+        /// Test Contains function accuracy with Words inserted and not inserted into Tree
+        /// </summary>
         [Test]
         public void TestContains()
         {
@@ -68,21 +74,24 @@ namespace Test
             Assert.AreEqual(false, tree.Contains(new Word("")), "Tree contains word that wasn't inserted");
         }
 
+        /// <summary>
+        /// Check Remove Item from Tree is accurate
+        /// </summary>
         [Test]
-        // remove an item from tree
         public void TestRemoveItem()
         {
             tree.RemoveItem(word2);
             string s = null;
             tree.PreOrder(ref s);
-
             string answer = "sweets, lolly, ";
 
             Assert.AreEqual(answer, s, "Tree remove item result incorrect");
         }
 
+        /// <summary>
+        /// Check that an exception is thrown when an attempt is made to remove an item not in the Tree
+        /// </summary>
         [Test]
-        // attempt to remove an item that is not in tree
         public void TestRemoveItemException()
         {
             Assert.Throws<Exception>(() =>
@@ -91,8 +100,10 @@ namespace Test
             });
         }
 
+        /// <summary>
+        /// Test correct Word object is returned by tree find function
+        /// </summary>
         [Test]
-        // test correct Word object is returned by tree find function
         public void TestFind()
         {
             // Word inserted into tree
@@ -100,19 +111,22 @@ namespace Test
 
             // Word not inserted into tree
             Assert.AreEqual(null, tree.Find(new Word("")), "Returned incorrect node object");
-
         }
 
+        /// <summary>
+        /// Check correct sequence of all tree Word objects are returned
+        /// </summary>
         [Test]
-        // check correct sequence of all tree Word objects are returned
         public void TestGetAllNodes()
         {
             Word[] array = new Word[3] { word3, word2, word };
             Assert.AreEqual(array, tree.GetAllNodes(), "Incorrect sequence of Word objects returned");
         }
 
+        /// <summary>
+        /// Check the correct  list of Word objects is returned in ascending Alphabetical order
+        /// </summary>
         [Test]
-        // Check the correct  list of Word objects is returned in ascending Alphabetical order
         public void TestConcodrance()
         {
             Word[] array = new Word[3] { word2, word3, word };

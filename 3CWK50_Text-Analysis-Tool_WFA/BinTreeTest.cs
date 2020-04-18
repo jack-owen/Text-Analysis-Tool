@@ -6,18 +6,17 @@ using System.Threading.Tasks;
 
 namespace Test
 {
-
     using _3CWK50_Text_Analysis_Tool_WFA;  // this allows to use Library and Book class
     using NUnit.Framework;
 
-    [TestFixture]  // denotes the class that contains tests
+    [TestFixture]
     class BinTreeTest 
     {
         Node<Word> root;
         BinTree<Word> tree, tree2;
         Word word, word2, word3;
 
-        [OneTimeSetUp] //executed once before any test
+        [OneTimeSetUp]
         public void TestFixtureSetUp()
         {
             word = new Word("Sweets");
@@ -27,35 +26,25 @@ namespace Test
 
         }
 
-        //[OneTimeTearDown] //executed once after all tests
-        //public void TestFixtureTearDown()
-        //{
-
-        //}
-
-        [SetUp]  //executed just before each test
-        public void SetUp() // review
+        /// <summary>
+        /// Constructors a Tree with 3 nodes and one empty Tree
+        /// </summary>
+        [SetUp]
+        public void SetUp()
         {
-            // construct tree with 3 nodes
             root = new Node<Word>(word);
             tree = new BinTree<Word>(root);
             root.Left = new Node<Word>(word2);
             root.Left.Right = new Node<Word>(word3);
 
-            // construct empty tree
             tree2 = new BinTree<Word>();
 
         }
 
-
-        //[TearDown] // executed just after each test
-        //public void TearDown()
-        //{
-
-        //}
-
-        [Test] // denotes a test case; this test case checks that the getBook method works as expected: 
-        // recovers the correct Title and Author of a Book
+        /// <summary>
+        /// Test to check Word object creation is correct for each node in Tree
+        /// </summary>
+        [Test]
         public void TestWordNamesAndLinks() 
         {
             Assert.AreEqual(word.WordObj, root.Data.WordObj, "Wrong word");
@@ -63,6 +52,9 @@ namespace Test
             Assert.AreEqual(word3.WordObj, root.Left.Right.Data.WordObj, "Wrong word");
         }
 
+        /// <summary>
+        /// Test to check Pre Order Traversal algorithm is result is correct
+        /// </summary>
         [Test]
         public void TestPreOrderTraversal()
         {
@@ -74,6 +66,9 @@ namespace Test
             Assert.AreEqual(answer, s, "Pre Order Traversal incorrect");
         }
 
+        /// <summary>
+        /// Test copy whole Tree function result accuracy
+        /// </summary>
         [Test]
         public void TestCopy()
         {
@@ -86,6 +81,9 @@ namespace Test
             Assert.AreEqual(s, d, "Copy unsuccessful");
         }
 
+        /// <summary>
+        /// Test the Tree count function result accuracy
+        /// </summary>
         [Test]
         public void TestCount()
         {

@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace _3CWK50_Text_Analysis_Tool_WFA
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
         private AVLTree<Word> tree = new AVLTree<Word>();
 
-        public Form1()
+        public Main()
         {
             InitializeComponent();
             //tree = new AVLTree<Word>();

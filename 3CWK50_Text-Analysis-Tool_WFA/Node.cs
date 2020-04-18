@@ -6,27 +6,21 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
 {
     class Node<T> where T : IComparable
     {
-        private T data;
         public Node<T> Left, Right;
-        private int balanceFactor = 0;
 
+        /// <summary>
+        /// Constructor for Node object that takes a Generic item value
+        /// </summary>
+        /// <param name="item">Generic value of the Node being created</param>
         public Node(T item)
         {
-            data = item;
+            Data = item;
             Left = null;
             Right = null;
         }
-        public T Data
-        {
-            set { data = value; }
-            get { return data; }
-        }
+        public T Data { set; get; }
 
-        public int BalanceFactor
-        {
-            set { balanceFactor = value; }
-            get { return balanceFactor; }
-        }
+        public int BalanceFactor { set; get; } = 0;
 
     }
 

@@ -1,12 +1,10 @@
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\bin\Debug\3CWK50_Text-Analysis-Tool_WFA.exe.config
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\bin\Debug\3CWK50_Text-Analysis-Tool_WFA.exe
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\bin\Debug\3CWK50_Text-Analysis-Tool_WFA.pdb
-C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\obj\Debug\3CWK50_Text-Analysis-Tool_WFA.csprojAssemblyReference.cache
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\obj\Debug\_3CWK50_Text_Analysis_Tool_WFA.Properties.Resources.resources
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\obj\Debug\3CWK50_Text-Analysis-Tool_WFA.csproj.GenerateResource.cache
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\obj\Debug\3CWK50_Text-Analysis-Tool_WFA.exe
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\obj\Debug\3CWK50_Text-Analysis-Tool_WFA.pdb
-C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\obj\Debug\_3CWK50_Text_Analysis_Tool_WFA.Form1.resources
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\obj\Debug\_3CWK50_Text_Analysis_Tool_WFA.EditWord.resources
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\obj\Debug\_3CWK50_Text_Analysis_Tool_WFA.AddLocation.resources
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\bin\Debug\NUnit3.TestAdapter.dll
@@ -17,3 +15,5 @@ C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studi
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\bin\Debug\nunit.framework.pdb
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\bin\Debug\nunit.framework.xml
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\obj\Debug\3CWK50_Text-Analysis-Tool_WFA.csproj.CopyComplete
+C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\bin\Debug\3CWK50_Text-Analysis-Tool_WFA.xml
+C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\obj\Debug\_3CWK50_Text_Analysis_Tool_WFA.Main.resources

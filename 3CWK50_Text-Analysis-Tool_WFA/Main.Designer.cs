@@ -1,6 +1,6 @@
 ﻿namespace _3CWK50_Text_Analysis_Tool_WFA
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -84,13 +84,12 @@
             this.label_qtyUniqueWords.AutoSize = true;
             this.label_qtyUniqueWords.Location = new System.Drawing.Point(165, 31);
             this.label_qtyUniqueWords.Name = "label_qtyUniqueWords";
-            this.label_qtyUniqueWords.Size = new System.Drawing.Size(151, 17);
+            this.label_qtyUniqueWords.Size = new System.Drawing.Size(0, 17);
             this.label_qtyUniqueWords.TabIndex = 12;
-            this.label_qtyUniqueWords.Text = "label_qtyUniqueWords";
             // 
             // button_remove_word
             // 
-            this.button_remove_word.Location = new System.Drawing.Point(275, 26);
+            this.button_remove_word.Location = new System.Drawing.Point(275, 27);
             this.button_remove_word.Name = "button_remove_word";
             this.button_remove_word.Size = new System.Drawing.Size(75, 23);
             this.button_remove_word.TabIndex = 13;
@@ -242,13 +241,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 621);
+            this.ClientSize = new System.Drawing.Size(895, 496);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label_qtyUniqueWords);
             this.Controls.Add(this.button_load);
             this.Controls.Add(this.groupBox2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Text Analysis Tool";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

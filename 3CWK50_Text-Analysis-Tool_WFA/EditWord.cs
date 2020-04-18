@@ -13,10 +13,10 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
     public partial class EditWord : Form
     {
         Word word;
-        Form1 parent;
+        Main parent;
         Location locationInEdit = null;
 
-        public EditWord(Object item, Form1 parent)
+        public EditWord(Object item, Main parent)
         {
             this.word = (Word)item;
             this.parent = parent;
