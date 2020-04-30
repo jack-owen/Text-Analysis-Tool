@@ -33,6 +33,12 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
         }
 
         /* 2. Manually edit (and save in the data structure) the information of a unique word */
+        /// <summary>
+        /// Update Word object word string value in the data structure and refresh the listview component 
+        /// in the Main form with the updated Word object value.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox_word_TextChanged(object sender, EventArgs e)
         {
             //** set word to input value
@@ -41,6 +47,11 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             parent.refresh_listView_words(string.Empty);
         }
 
+        /// <summary>
+        /// Select the user selected Word Location object for editing by updating the locationInEdit reference and line/pos edit fields.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView_locations_Click(object sender, EventArgs e)
         {
             ListViewItem.ListViewSubItem lineNo = listView_locations.SelectedItems[0].SubItems[1]; // line#
@@ -48,25 +59,22 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             LinkedList<Location> locations = word.Locations;
             foreach (Location l in locations)
             {
-                //Console.WriteLine(l.LineNo.ToString() + " " + lineNo.Text);
                 if (l.LineNo.ToString().Equals(lineNo.Text) && l.Pos.ToString().Equals(pos.Text))
                 {
-                    Console.WriteLine("line number match");
                     locationInEdit = l;
-                    setLocationEdit();
+                    textBox_locations_edit_lineNo.Text = locationInEdit.LineNo.ToString();
+                    textBox_locations_edit_pos.Text = locationInEdit.Pos.ToString();
                 }
             }
         }
-
-        private void setLocationEdit()
-        {
-            textBox_locations_edit_lineNo.Text = locationInEdit.LineNo.ToString();
-            textBox_locations_edit_pos.Text = locationInEdit.Pos.ToString();
-        }
-
+        
+        /// <summary>
+        /// Updates Location object lineNo value when lineNo field is changed in EditWord form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox_locations_edit_lineNo_TextChanged(object sender, EventArgs e)
         {
-            //* try catch to verify entry text is between 1 and eg 1000
             if (locationInEdit != null)
             {
                 try
@@ -98,9 +106,13 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
         }
 
+        /// <summary>
+        /// Updates Location object pos value when pos field is changed in EditWord form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox_locations_edit_pos_TextChanged(object sender, EventArgs e)
         {
-            //* add validation methods
             if (locationInEdit != null)
             {
                 try
@@ -133,11 +145,19 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
 
         }
 
+        /// <summary>
+        /// Simply set the occurence label value to the Word object location quantity
+        /// </summary>
         public void refresh_label_occurrences_value()
         {
             label_occurrences_value.Text = word.Locations.Count.ToString();
         }
 
+        /// <summary>
+        /// Removes Location object from Word object and refreshes label occurence and listview location values.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_location_remove_Click(object sender, EventArgs e)
         {
             word.RemoveLocation(locationInEdit);
@@ -148,6 +168,9 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             textBox_locations_edit_pos.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Fetches Word Location objects and overwrites existing listView_locations values.
+        /// </summary>
         public void refresh_listView_locations()
         {
             ListViewItem[] list = new ListViewItem[word.Locations.Count];
@@ -163,12 +186,11 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             listView_locations.Items.AddRange(list);
         }
 
-        private void EditWord_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Console.WriteLine("form closing");
-            //update_listBox_words();
-        }
-
+        /// <summary>
+        /// Creates a new form to add another location to the Word object
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_location_create_Click(object sender, EventArgs e)
         {
             AddLocation editWordForm = new AddLocation(word, this);

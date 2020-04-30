@@ -237,16 +237,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search by Prefix";
             // 
-            // Form1
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 496);
+            this.ClientSize = new System.Drawing.Size(895, 596);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label_qtyUniqueWords);
             this.Controls.Add(this.button_load);
             this.Controls.Add(this.groupBox2);
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "Text Analysis Tool";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

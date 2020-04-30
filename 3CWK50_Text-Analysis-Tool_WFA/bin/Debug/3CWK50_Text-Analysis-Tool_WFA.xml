@@ -4,6 +4,20 @@
         <name>3CWK50_Text-Analysis-Tool_WFA</name>
     </assembly>
     <members>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.AddLocation.#ctor(System.Object,_3CWK50_Text_Analysis_Tool_WFA.EditWord)">
+            <summary>
+            Initialise Word and EditWord objects.
+            </summary>
+            <param name="w"></param>
+            <param name="parent"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.AddLocation.btn_add_Click(System.Object,System.EventArgs)">
+            <summary>
+            Adds new Location object to the Word Locations LinkedList by reading the line number and position values entered in the form
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="F:_3CWK50_Text_Analysis_Tool_WFA.AddLocation.components">
             <summary>
             Required designer variable.
@@ -231,6 +245,59 @@
             <param name="a">First variable to swap</param>
             <param name="b">Second variable to swap</param>
         </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.EditWord.textBox_word_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            Update Word object word string value in the data structure and refresh the listview component 
+            in the Main form with the updated Word object value.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.EditWord.listView_locations_Click(System.Object,System.EventArgs)">
+            <summary>
+            Select the user selected Word Location object for editing by updating the locationInEdit reference and line/pos edit fields.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.EditWord.textBox_locations_edit_lineNo_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            Updates Location object lineNo value when lineNo field is changed in EditWord form
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.EditWord.textBox_locations_edit_pos_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            Updates Location object pos value when pos field is changed in EditWord form
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.EditWord.refresh_label_occurrences_value">
+            <summary>
+            Simply set the occurence label value to the Word object location quantity
+            </summary>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.EditWord.button_location_remove_Click(System.Object,System.EventArgs)">
+            <summary>
+            Removes Location object from Word object and refreshes label occurence and listview location values.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.EditWord.refresh_listView_locations">
+            <summary>
+            Fetches Word Location objects and overwrites existing listView_locations values.
+            </summary>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.EditWord.button_location_create_Click(System.Object,System.EventArgs)">
+            <summary>
+            Creates a new form to add another location to the Word object
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="F:_3CWK50_Text_Analysis_Tool_WFA.EditWord.components">
             <summary>
             Required designer variable.
@@ -247,6 +314,97 @@
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.Main.button_load_Click(System.Object,System.EventArgs)">
+            <summary>
+            Load a text file and store the unique words in an AVL Tree
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.Main.button_editWord_Click(System.Object,System.EventArgs)">
+            <summary>
+            Manually edit (and save in the data structure) the information of a unique word
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.Main.updateWordCounter">
+            <summary>
+            Display the number of unique words present in the text
+            </summary>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.Main.button_remove_word_Click(System.Object,System.EventArgs)">
+            <summary>
+            Remove a unique word from the data structure
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.Main.textBox1_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            Word input search
+            (Supports task requirement No.1)
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.Main.refresh_listView_words(System.String)">
+            <summary>
+            Overwrites the listView_words component with the words stored in the AVL Tree
+            (Supports task requirement No.1)
+            </summary>
+            <param name="wordToSearch"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.Main.radioBtn_concordance_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Overwrites listView component by displaying the concordance of the text stored in the AVL Tree
+            (show all the unique words present in the text in alphabetic order and the corresponding number of times in which they occur in the text).
+            (Supports task requirement No.5)
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.Main.radioBtn_mostCommonUniqueWord_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Writes the most common unique word present in AVLTree to the listView component
+            (Supports task requirement No.7)
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.Main.radioBtn_wordsThatOccurMoreThan_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Writes the words which occur more than a specified number of times in AVLTree to the listView component
+            (Supports task requirement No.7)
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.Main.radioBtn_decreasingOrderOccurrence_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Writes the unique words present in the AVLTree in decreasing order of occurrence to the listView component
+            (Supports task requirement No.8)
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.Main.radioButton_collocation_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Writes the Collocation matching results stored in the AVL Tree to the listView component - 
+            for a specified pair of unique words display the number of times they 
+            appear next to each other(for example “pound note”) from searching the implemented data 
+            structure. Assume they must exist on the same line.
+            (Supports task requirement No.9)
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:_3CWK50_Text_Analysis_Tool_WFA.Main.checkForLoadedWords">
+            <summary>
+            Checks if the AVL Tree contains any Word objects, if not display an error message to user.
+            </summary>
+            <returns></returns>
         </member>
         <member name="F:_3CWK50_Text_Analysis_Tool_WFA.Main.components">
             <summary>

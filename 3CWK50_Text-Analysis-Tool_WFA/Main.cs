@@ -19,19 +19,13 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
         public Main()
         {
             InitializeComponent();
-            //tree = new AVLTree<Word>();
-            //string _ = "It was one January morning, very early, a pinching, frosty morning. The cove all grey with hoar frost,";
-            //string _ = "frost";
-            //char[] chars = { ',', ' ', '.' };
-            //string[] e = _.Split(chars);
-            //for (int i = 0; i < e.Length; i++)
-            //{
-            //    tree.InsertItem(new Word(e[i], 1, 1));
-            //}
-            //refresh_listView_words(string.Empty); // not necessary to load words on Load because no words will be present on Load
         }
 
-        /* 1. Load a text file and store the unique words (AVL Tree) */
+        /// <summary>
+        /// Load a text file and store the unique words in an AVL Tree
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_load_Click(object sender, EventArgs e)
         {
             int c = 0;
@@ -74,7 +68,11 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             Console.WriteLine(tree.Count()+" words added");
         }
 
-        /* 2. Manually edit (and save in the data structure) the information of a unique word */
+        /// <summary>
+        /// Manually edit (and save in the data structure) the information of a unique word
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_editWord_Click(object sender, EventArgs e)
         {
             if (!checkForLoadedWords())
@@ -105,13 +103,19 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             editWordForm.Show();
         }
 
-        /* 3. Display the number of unique words present in the text */
+        /// <summary>
+        /// Display the number of unique words present in the text
+        /// </summary>
         private void updateWordCounter()
         {
             label_qtyUniqueWords.Text = " Word Count:" + tree.Count().ToString();
         }
 
-        /* 4. Remove a unique word from the data structure */
+        /// <summary>
+        /// Remove a unique word from the data structure
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_remove_word_Click(object sender, EventArgs e)
         {
             if (!checkForLoadedWords())
@@ -146,8 +150,12 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
         }
 
-        /* Word input search 
-         * Supports Point No.1 */
+         /// <summary>
+         /// Word input search
+         /// (Supports task requirement No.1)
+         /// </summary>
+         /// <param name="sender"></param>
+         /// <param name="e"></param>
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -155,8 +163,11 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             refresh_listView_words(textBox.Text);
         }
 
-        /* A private function called when the Tree of objects is changed to update the listView_words component
-         * Supports Point No.1 */
+        /// <summary>
+        /// Overwrites the listView_words component with the words stored in the AVL Tree
+        /// (Supports task requirement No.1)
+        /// </summary>
+        /// <param name="wordToSearch"></param>
         public void refresh_listView_words(string wordToSearch)
         {
             
@@ -186,11 +197,6 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 _ = MessageBox.Show(message, caption, buttons);
             }
-            else if (listView_words.Items.Count > 0)
-            {
-                //listView_words.Items[0].Focused;
-                //listView_words.Items[0].Selected;
-            }
             listView_words.Columns.Add("Word", -2, HorizontalAlignment.Left);
             listView_words.Columns.Add("Occurrences", -2, HorizontalAlignment.Left);
             listView_words.Columns.Add("LineNo:Position", -2, HorizontalAlignment.Left);
@@ -198,8 +204,13 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             listView_words.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-        /* 5. Display the concordance of the text – i.e. show all the unique words present in the text in
-                alphabetic order and the corresponding number of times in which they occur in the text */
+        /// <summary>
+        /// Overwrites listView component by displaying the concordance of the text stored in the AVL Tree
+        /// (show all the unique words present in the text in alphabetic order and the corresponding number of times in which they occur in the text).
+        /// (Supports task requirement No.5)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioBtn_concordance_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
@@ -223,7 +234,12 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
         }
 
-        /* 7a the most common unique word present in the text */
+        /// <summary>
+        /// Writes the most common unique word present in AVLTree to the listView component
+        /// (Supports task requirement No.7)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioBtn_mostCommonUniqueWord_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
@@ -249,7 +265,12 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             
         }
 
-        /* 7b unique words which occur more than a specified number of times */
+        /// <summary>
+        /// Writes the words which occur more than a specified number of times in AVLTree to the listView component
+        /// (Supports task requirement No.7)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioBtn_wordsThatOccurMoreThan_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
@@ -299,7 +320,12 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
         }
 
-        /* all the unique words present in the text in decreasing order of occurrence */
+        /// <summary>
+        /// Writes the unique words present in the AVLTree in decreasing order of occurrence to the listView component
+        /// (Supports task requirement No.8)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioBtn_decreasingOrderOccurrence_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
@@ -316,9 +342,6 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             Word[] words = tree.GetAllNodes();
             ListViewItem[] list = new ListViewItem[words.Length];
             listView_advancedSearch.Items.Clear();
-
-            //?* methods to get Words in Occurence order descending. which is more maintainable?
-            // handle insertion sort & compareto locally or use BSTree Insertion method and somehow override the compareTo method for desc rather than asc?
 
             // insertion sort
             for (int i = 1; i < words.Length; i++)
@@ -341,11 +364,15 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
         }
 
-        /* for a specified pair of unique words display the number of times they
-        appear next to each other (for example “pound note”) from searching the implemented data
-        structure. Assume they must exist on the same line. */
-        
-        //? is a nested for loop search on all nodes the most efficient method to use
+        /// <summary>
+        /// Writes the Collocation matching results stored in the AVL Tree to the listView component - 
+        /// for a specified pair of unique words display the number of times they 
+        /// appear next to each other(for example “pound note”) from searching the implemented data 
+        /// structure. Assume they must exist on the same line.
+        /// (Supports task requirement No.9)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButton_collocation_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
@@ -440,6 +467,10 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             }
         }
 
+        /// <summary>
+        /// Checks if the AVL Tree contains any Word objects, if not display an error message to user.
+        /// </summary>
+        /// <returns></returns>
         private bool checkForLoadedWords()
         {
             Word[] words = tree.GetAllNodes();

@@ -180,7 +180,6 @@
             this.Controls.Add(this.panel1);
             this.Name = "EditWord";
             this.Text = "Edit Word";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditWord_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

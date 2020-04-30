@@ -17,3 +17,4 @@ C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studi
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\obj\Debug\3CWK50_Text-Analysis-Tool_WFA.csproj.CopyComplete
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\bin\Debug\3CWK50_Text-Analysis-Tool_WFA.xml
 C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\obj\Debug\_3CWK50_Text_Analysis_Tool_WFA.Main.resources
+C:\Users\jacko\OneDrive - MMU\Year 2\Algorithms and Data Structures\visual studio workspace\3CWK50_Text-Analysis-Tool_WFA\3CWK50_Text-Analysis-Tool_WFA\obj\Debug\3CWK50_Text-Analysis-Tool_WFA.csprojAssemblyReference.cache
