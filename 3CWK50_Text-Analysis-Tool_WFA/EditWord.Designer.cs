@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditWord));
             this.panel1 = new System.Windows.Forms.Panel();
             this.button_location_remove = new System.Windows.Forms.Button();
             this.button_location_create = new System.Windows.Forms.Button();
@@ -41,6 +42,7 @@
             this.label_occurrences_value = new System.Windows.Forms.Label();
             this.label_occurrences = new System.Windows.Forms.Label();
             this.textBox_word = new System.Windows.Forms.TextBox();
+            this.textBox_hint = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -171,13 +173,24 @@
             this.textBox_word.TabIndex = 7;
             this.textBox_word.TextChanged += new System.EventHandler(this.textBox_word_TextChanged);
             // 
+            // textBox_hint
+            // 
+            this.textBox_hint.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.textBox_hint.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_hint.Location = new System.Drawing.Point(25, 369);
+            this.textBox_hint.Name = "textBox_hint";
+            this.textBox_hint.Size = new System.Drawing.Size(419, 15);
+            this.textBox_hint.TabIndex = 22;
+            // 
             // EditWord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 390);
+            this.ClientSize = new System.Drawing.Size(473, 439);
+            this.Controls.Add(this.textBox_hint);
             this.Controls.Add(this.textBox_word);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditWord";
             this.Text = "Edit Word";
             this.panel1.ResumeLayout(false);
@@ -201,5 +214,6 @@
         private System.Windows.Forms.ListView listView_locations;
         private System.Windows.Forms.Button button_location_create;
         private System.Windows.Forms.Button button_location_remove;
+        private System.Windows.Forms.TextBox textBox_hint;
     }
 }

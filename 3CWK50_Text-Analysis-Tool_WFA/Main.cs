@@ -15,10 +15,11 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
     public partial class Main : Form
     {
         private AVLTree<Word> tree = new AVLTree<Word>();
-
+        private const string hint = "Hint: Load a text file to insert your words to process your sentences";
         public Main()
         {
             InitializeComponent();
+            textBox_hint.Text = hint;
         }
 
         /// <summary>

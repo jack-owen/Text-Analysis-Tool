@@ -15,6 +15,7 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
         Word word;
         Main parent;
         Location locationInEdit = null;
+        private const string hint = "Hint: Changes will be saved automatically, select a location to edit";
 
         public EditWord(Object item, Main parent)
         {
@@ -30,6 +31,7 @@ namespace _3CWK50_Text_Analysis_Tool_WFA
             listView_locations.Columns.Add("Pos #", -2, HorizontalAlignment.Left);
             refresh_listView_locations();
             refresh_label_occurrences_value();
+            textBox_hint.Text = hint;
         }
 
         /* 2. Manually edit (and save in the data structure) the information of a unique word */

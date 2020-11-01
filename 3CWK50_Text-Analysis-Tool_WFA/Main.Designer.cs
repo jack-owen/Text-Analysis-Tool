@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button_load = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -46,6 +47,7 @@
             this.radioBtn_mostCommonUniqueWord = new System.Windows.Forms.RadioButton();
             this.radioBtn_concordance = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox_hint = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -237,15 +239,26 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search by Prefix";
             // 
+            // textBox_hint
+            // 
+            this.textBox_hint.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.textBox_hint.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_hint.Location = new System.Drawing.Point(67, 478);
+            this.textBox_hint.Name = "textBox_hint";
+            this.textBox_hint.Size = new System.Drawing.Size(757, 15);
+            this.textBox_hint.TabIndex = 21;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(895, 596);
+            this.Controls.Add(this.textBox_hint);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label_qtyUniqueWords);
             this.Controls.Add(this.button_load);
             this.Controls.Add(this.groupBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.Text = "Text Analysis Tool";
             this.groupBox1.ResumeLayout(false);
@@ -277,6 +290,7 @@
         private System.Windows.Forms.RadioButton radioButton_collocation;
         private System.Windows.Forms.TextBox textBox_collocation_B;
         private System.Windows.Forms.TextBox textBox_collocation_A;
+        private System.Windows.Forms.TextBox textBox_hint;
     }
 }
 

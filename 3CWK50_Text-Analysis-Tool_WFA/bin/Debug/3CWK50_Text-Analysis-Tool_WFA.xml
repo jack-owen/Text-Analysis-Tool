@@ -517,6 +517,11 @@
               resource lookups using this strongly typed resource class.
             </summary>
         </member>
+        <member name="P:_3CWK50_Text_Analysis_Tool_WFA.Properties.Resources.icon">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
         <!-- Badly formed XML comment ignored for member "M:Test.AVLTreeTest.TestInsertItemAndBalanceFactorRotations" -->
         <member name="M:Test.AVLTreeTest.TestRemoveItem">
             <summary>

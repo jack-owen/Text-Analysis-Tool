@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddLocation));
             this.label_locations_pos = new System.Windows.Forms.Label();
             this.textBox_locations_add_pos = new System.Windows.Forms.TextBox();
             this.label_locations_lineNo = new System.Windows.Forms.Label();
@@ -87,6 +88,7 @@
             this.Controls.Add(this.textBox_locations_add_pos);
             this.Controls.Add(this.label_locations_lineNo);
             this.Controls.Add(this.textBox_locations_add_lineNo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddLocation";
             this.Text = "Add Location";
             this.ResumeLayout(false);
